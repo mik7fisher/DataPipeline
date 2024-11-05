@@ -1,0 +1,6 @@
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\models\dao\IWifiDao.java
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\models\entity\Wifi.java
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\controllers\WifiRestController.java
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\SpringBootBackendApirestApplication.java
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\models\services\IWifiService.java
+C:\Repo\DataPipeline\Examen\spring-boot-backend-apirest\src\main\java\com\springboot\backend\apirest\models\services\WifiServiceImpl.java
