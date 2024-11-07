@@ -73,7 +73,7 @@ public class WifiRestController {
 		return new ResponseEntity<Wifi>(wifi, HttpStatus.OK);
 	}
 	
-	@PostMapping("/clientes")
+	@PostMapping("/wifies")
 	public ResponseEntity<?> create(@Valid @RequestBody Wifi wifi, BindingResult result) {
 		
 		Wifi wifiNew = null;
@@ -98,12 +98,12 @@ public class WifiRestController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje", "El cliente ha sido creado con éxito!");
-		response.put("cliente", wifiNew);
+		response.put("mensaje", "El wifi-point ha sido creado con éxito!");
+		response.put("wifi-point", wifiNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/clientes/{id}")
+	@PutMapping("/wifies/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Wifi wifi, BindingResult result, @PathVariable Long id) {
 
 		Wifi wifiActual = wifiService.findById(id);
@@ -124,7 +124,7 @@ public class WifiRestController {
 		}
 		
 		if (wifiActual == null) {
-			response.put("mensaje", "Error: no se pudo editar, el cliente ID: "
+			response.put("mensaje", "Error: no se pudo editar, el wifi ID: "
 					.concat(id.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
@@ -142,13 +142,13 @@ public class WifiRestController {
 			wifiUpdated = wifiService.save(wifiActual);
 
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al actualizar el cliente en la base de datos");
+			response.put("mensaje", "Error al actualizar el wifi-poin en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		response.put("mensaje", "El cliente ha sido actualizado con éxito!");
-		response.put("cliente", wifiUpdated);
+		response.put("mensaje", "El wifi-poin ha sido actualizado con éxito!");
+		response.put("wifi-poin", wifiUpdated);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
@@ -161,12 +161,12 @@ public class WifiRestController {
 		try {
 		  wifiService.delete(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al eliminar el cliente de la base de datos");
+			response.put("mensaje", "Error al eliminar el wifi-point de la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje", "El cliente eliminado con éxito!");
+		response.put("mensaje", "El wifi-point eliminado con éxito!");
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
