@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.backend.apirest.models.entity.Wifi;
@@ -151,7 +153,7 @@ public class WifiRestController {
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/clientes/{id}")
+	@DeleteMapping("/wifies/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		
 		Map<String, Object> response = new HashMap<>();
@@ -168,5 +170,27 @@ public class WifiRestController {
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
+	
 
+	@GetMapping("/wifi/filtrar-colonia/{term}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Wifi> filtrarColonia(@PathVariable String term){
+		return wifiService.findWifiByColonia(term);
+	}
+	
+	
+	
+	
+	 @GetMapping("/wifi/proximidad")
+	    @ResponseStatus(HttpStatus.OK)
+	    public Page<Wifi> obtenerWifiPorProximidad(@RequestParam double lat, 
+	                                               @RequestParam double lon, 
+	                                               @RequestParam(defaultValue = "0") int page, 
+	                                               @RequestParam(defaultValue = "10") int size) {
+	        Pageable pageable = PageRequest.of(page, size);
+	        return wifiService.findByProximity(lat, lon, pageable);
+	    }
+	
+
+	
 }

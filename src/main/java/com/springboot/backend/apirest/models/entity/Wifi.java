@@ -32,6 +32,7 @@ public class Wifi implements Serializable{
 	private String colonia;
 	private String alcaldia;
 	
+	
 	@Column(name="fechaInstalacion")
 	@Temporal(TemporalType.DATE)
 	private Date fechaInstalacion;
@@ -124,6 +125,7 @@ public class Wifi implements Serializable{
 	public void setFechaInstalacion(Date fechaInstalacion) {
 		this.fechaInstalacion = fechaInstalacion;
 	}
+
 
 
 

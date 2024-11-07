@@ -19,4 +19,10 @@ public List<Wifi> findAll();
 	public Wifi save(Wifi wifi);
 	
 	public void delete(Long id);
-}
+	
+	public List<Wifi> findWifiByColonia(String term);
+	
+	public Page<Wifi> findByProximity(double lat, double lon, Pageable pageable);
+	
+    }
+

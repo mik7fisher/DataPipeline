@@ -50,5 +50,15 @@ public class WifiServiceImpl implements IWifiService{
 	public void delete(Long id) {
 		wifiDao.deleteById(id);
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Wifi> findWifiByColonia(String term) {
+		return wifiDao.findByColonia(term);
+	}
+	
+	public Page<Wifi> findByProximity(double lat, double lon, Pageable pageable) {
+        return wifiDao.findByProximity(lat, lon, pageable);
+    }
 
 }
